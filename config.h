@@ -12,9 +12,6 @@ static const char unknown_str[] = "n/a";
 /*
  * function            description                     argument (example)
  *
- * backlight_perc      backlight percentage            device name
- *                                                     (intel_backlight)
- *                                                     NULL on OpenBSD
  * battery_perc        battery percentage              battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
@@ -68,13 +65,14 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ netspeed_tx,     "[I%s ",      "enp43s0"    },                      
-	{ cpu_perc,        "C%s%% ",      NULL        },       
-	{ ram_perc,        "M%s%% ",      NULL        },       
-	{ disk_perc,       "D%s%%]",     "/"          },       
-	{ ipv4,            "[%s]",       "br0"        },                        
-	{ vol_perc,        "[VOL%s ",    "/dev/mixer" },                        
-	{ battery_perc,    "BAT%s%% ",   "BAT1"       },       
-	{ uptime,          "UT%s]",       NULL        },                       
-	{ datetime,        "[%s]",       "%F %T %A"   },
+	{ netspeed_tx,     "[I%s ",      "enp43s0"        },
+	{ cpu_perc,        "C%s%% ",      NULL            },
+	{ ram_perc,        "M%s%% ",      NULL            },
+	{ disk_perc,       "D%s%%]",     "/"              },
+	{ ipv4,            "[%s]",       "br0"            },
+	{ vol_perc,        "[VOL%s%% ",    "/dev/mixer"     },
+	{ backlight_perc,  "BL%s ",       "intel_backlight"},
+	{ battery_perc,    "BAT%s%% ",   "BAT1"           },
+	{ uptime,          "UT%s]",       NULL            },
+	{ datetime,        "[%s]",       "%F %T %A"       },
 };
